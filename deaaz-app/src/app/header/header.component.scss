@@ -1,0 +1,30 @@
+@import url('https://fonts.googleapis.com/css?family=Cutive+Mono|Montserrat:400,400i,700');
+@import '../../variables';
+
+:host {
+    height: 100px;
+}
+
+.navbar-brand {
+    display: inline-block;
+    margin-right: 0.5rem;
+    margin-top: 0.5rem;
+}
+
+.divider {
+    width: 1px;
+    height: 3rem;
+    background-color: #4286f4;
+    border-radius: 50px;
+    display: inline-block;
+    margin-top: 0.6rem;
+}
+
+.logo {
+    font-family: 'Cutive Mono', 'Montserrat', sans-serif;
+}
+
+.navbar-toggler-div {
+    text-align: center;
+
+}
