@@ -1,30 +1,42 @@
-@import url('https://fonts.googleapis.com/css?family=Cutive+Mono|Montserrat:400,400i,700');
-@import '../../variables';
+@import '../../styles';
 
 :host {
-    height: 100px;
+    height: 10rem;    
 }
 
-.navbar-brand {
-    display: inline-block;
-    margin-right: 0.5rem;
-    margin-top: 0.5rem;
+.menu ul {
+    display: block;
+    text-align: center;
+    list-style: none;
+    margin: 1.5rem 0 1rem;
+
 }
 
-.divider {
-    width: 1px;
-    height: 3rem;
-    background-color: #4286f4;
-    border-radius: 50px;
+.menu ul li {
     display: inline-block;
-    margin-top: 0.6rem;
+}
+
+.menu ul li a {
+    text-decoration: none;
+    color: $black;
+    padding: 2rem;
+    text-transform: uppercase;
+}
+
+.menu ul li a:hover {
+    color: $blue;
+
+}
+
+.menu ul li a.active {
+    text-decoration: line-through;
+    color: $blue;
 }
 
 .logo {
-    font-family: 'Cutive Mono', 'Montserrat', sans-serif;
-}
-
-.navbar-toggler-div {
+    font-family: $font-logo;
     text-align: center;
-
+    margin: 1rem;
+    
 }
+
