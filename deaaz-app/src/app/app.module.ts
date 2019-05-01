@@ -15,6 +15,7 @@ import { FooterComponent } from './footer/footer.component';
 import { HomeComponent } from './home/home.component';
 import { PostComponent } from './post/post.component';
 import { SafeHtmlPipe } from './safe-html.pipe';
+import { BlogComponent } from './blog/blog.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { SafeHtmlPipe } from './safe-html.pipe';
     FooterComponent,
     HomeComponent,
     PostComponent,
-    SafeHtmlPipe
+    SafeHtmlPipe,
+    BlogComponent
   ],
   imports: [
     BrowserModule,

@@ -18,5 +18,16 @@
     <div class="content" [innerHTML]="post.content | safeHtml">
     </div>
   </div>
-  <textarea [froalaEditor] [(froalaModel)]="editorContent"></textarea>
+  <div class="col-12">
+    <div class="assinatura">
+      <span  translate>post.publicado</span>
+      <span>{{post.created_date}}</span>
+      <span translate>post.por</span>
+      <span>{{post.created_by}}</span>
+      <span *ngIf="post.updated_by" translate>post.actualizado</span>
+    </div>
+  </div>
+  <div class="col-12">
+    <textarea [froalaEditor] [(froalaModel)]="editorContent"></textarea>
+  </div>
 </div>

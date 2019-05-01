@@ -1,8 +1,8 @@
 @import '../../styles';
 
-:host {
-    height: 10rem;    
-}
+// :host {
+//     height: 10rem;    
+// }
 
 .menu ul {
     display: block;
@@ -29,7 +29,7 @@
 }
 
 .menu ul li a.active {
-    text-decoration: line-through;
+    // text-decoration: line-through;
     color: $blue;
 }
 

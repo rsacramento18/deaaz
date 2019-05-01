@@ -1,0 +1,25 @@
+@import '../../styles';
+
+.letters {
+    padding: 0.25rem 0;
+    border-top: 1px solid $black;
+    border-bottom: 1px solid $black;
+    text-align: center;
+}
+.autor {
+    display: inline-block;
+    text-align: center;
+    background-color: $grey;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+    margin: 0 0.05rem;
+}
+
+.autor h3 {
+    color: $white;
+    font-family: $font-logo;
+    font-size: 2em;
+    margin: 0;
+    line-height: 2.5rem;
+}
