@@ -1,25 +1,27 @@
 @import '../../styles';
 
 .letters {
-    padding: 0.25rem 0;
-    border-top: 1px solid $black;
-    border-bottom: 1px solid $black;
-    text-align: center;
+  padding: 0.25rem 0;
+  text-align: center;
+  margin: 0 0.5rem;
+  padding: 0 0.25rem;
 }
 .autor {
-    display: inline-block;
-    text-align: center;
-    background-color: $grey;
-    width: 2.5rem;
-    height: 2.5rem;
-    border-radius: 50%;
-    margin: 0 0.05rem;
+  display: block;
+  text-align: center;
+  background-color: $grey;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  margin: 0.25rem 0;
+  padding: 0 0.05rem;
+  cursor: pointer;
 }
 
 .autor h3 {
-    color: $white;
-    font-family: $font-logo;
-    font-size: 2em;
-    margin: 0;
-    line-height: 2.5rem;
+  color: $white;
+  font-family: $font-logo;
+  font-size: 2em;
+  margin: 0;
+  line-height: 2.5rem;
 }

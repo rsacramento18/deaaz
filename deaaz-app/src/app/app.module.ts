@@ -16,6 +16,9 @@ import { HomeComponent } from './home/home.component';
 import { PostComponent } from './post/post.component';
 import { SafeHtmlPipe } from './safe-html.pipe';
 import { BlogComponent } from './blog/blog.component';
+import { SobreComponent } from './sobre/sobre.component';
+import { ContactosComponent } from './contactos/contactos.component';
+import { EscritorComponent } from './escritor/escritor.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +28,10 @@ import { BlogComponent } from './blog/blog.component';
     HomeComponent,
     PostComponent,
     SafeHtmlPipe,
-    BlogComponent
+    BlogComponent,
+    SobreComponent,
+    ContactosComponent,
+    EscritorComponent
   ],
   imports: [
     BrowserModule,
