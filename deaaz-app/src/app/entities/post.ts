@@ -1,8 +1,11 @@
+import {Writer} from './writer';
+
 export class Post {
+    writer: Writer;
     title: string;
-    sub_title: string;
-    content: string; 
-    created_by: string;
-    created_date: string;
-    updated_date: string;
+    subtitle: string;
+    post: string;
+    createdBy: string;
+    creationDate: string;
+    updatedDate: string;
 }
