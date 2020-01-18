@@ -9,6 +9,7 @@ import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import {HttpClient, HttpClientModule} from '@angular/common/http';
 import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
+import {ReactiveFormsModule} from '@angular/forms';
 
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
@@ -38,6 +39,7 @@ import { EscritorComponent } from './escritor/escritor.component';
     AppRoutingModule,
     NgbModule,
     HttpClientModule,
+    ReactiveFormsModule,
     TranslateModule.forRoot({
         loader: {
             provide: TranslateLoader,
@@ -45,7 +47,7 @@ import { EscritorComponent } from './escritor/escritor.component';
             deps: [HttpClient]
         }
     }),
-    FroalaEditorModule.forRoot(), 
+    FroalaEditorModule.forRoot(),
     FroalaViewModule.forRoot()
   ],
   providers: [],
