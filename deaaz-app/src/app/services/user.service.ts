@@ -5,7 +5,7 @@ import {User} from '../entities/user';
 @Injectable({
   providedIn: 'root'
 })
-export class UserService{
+export class UserService {
   private baseUrl = 'http://localhost:8080/api/users';
 
   constructor(private httpClient: HttpClient) { }
