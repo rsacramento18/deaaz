@@ -34,6 +34,7 @@ export class EscritorComponent implements OnInit {
       console.log(this.loginForm);
       this.authenticationService.loginUser(this.user).subscribe((response: any) => {
         console.log('response ', response.token);
+        window.localStorage.setItem('currentUser', response.token);
       });
 
     }

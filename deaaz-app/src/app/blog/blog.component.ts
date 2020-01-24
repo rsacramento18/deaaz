@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {UserService} from "../services/user.service";
+import {User} from "../entities/user";
 
 @Component({
   selector: 'app-blog',
@@ -8,8 +10,9 @@ import { Component, OnInit } from '@angular/core';
 export class BlogComponent implements OnInit {
   private letters: String[] = [];
   private tags: String[] = [];
+  private user: User;
 
-  constructor() { }
+  constructor(private userServices: UserService) { }
 
   ngOnInit() {
     this.letters.push("A");
@@ -33,4 +36,10 @@ export class BlogComponent implements OnInit {
     this.tags.push("Anedota");
   }
 
+
+  getUsers() {
+    this.userServices.getListUser().subscribe((users: User[]) => {
+      console.log('response ', users);
+    });
+  }
 }

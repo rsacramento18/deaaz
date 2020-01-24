@@ -11,11 +11,11 @@ export class UserService {
   constructor(private httpClient: HttpClient) { }
 
   getUser( id: number ) {
-    return this.httpClient.get(this.baseUrl + '/${id}');
+    return this.httpClient.get(this.baseUrl + '/${id}', {withCredentials: true});
   }
 
   getListUser() {
-    return this.httpClient.get(this.baseUrl);
+    return this.httpClient.get(this.baseUrl, {withCredentials: true});
   }
 
   createUser( user: User) {
