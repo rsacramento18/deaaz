@@ -1,6 +1,9 @@
 package com.deaaz.deaazcore.controller;
 
 import com.deaaz.deaazcore.bl.UserBL;
+import com.deaaz.deaazcore.dto.CriteriaDTO;
+import com.deaaz.deaazcore.dto.UserDTO;
+import com.deaaz.deaazcore.refs.OperatorType;
 import com.deaaz.deaazcore.security.JwtRequest;
 import com.deaaz.deaazcore.security.JwtResponse;
 import com.deaaz.deaazcore.security.JwtToken;
@@ -16,6 +19,8 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
+import java.util.ArrayList;
+import java.util.List;
 
 @RestController
 @RequestMapping("/api")
@@ -30,8 +35,11 @@ public class AuthController {
     @Autowired
     private JwtUserDetailsService jwtUserDetailsService;
 
+    @Autowired
+    private UserBL userBL;
+
     @PostMapping(value = "/authenticate")
-    public ResponseEntity<?> createAuthenticationToken(@RequestBody JwtRequest authenticationRequest, HttpServletResponse response) throws Exception {
+    public UserDTO createAuthenticationToken(@RequestBody JwtRequest authenticationRequest, HttpServletResponse response) throws Exception {
 
         authenticate(authenticationRequest.getUsername(), authenticationRequest.getPassword());
 
@@ -47,7 +55,13 @@ public class AuthController {
 
         response.addCookie(cookie);
 
-        return ResponseEntity.ok(new JwtResponse(token));
+        List<CriteriaDTO> criterias = new ArrayList<>();
+        CriteriaDTO criteria = new CriteriaDTO(authenticationRequest.getUsername(), "username", OperatorType.EQUAL);
+        criterias.add(criteria);
+
+        List<UserDTO> user = userBL.getUserList(criterias);
+
+        return user.get(0);
 
     }
 

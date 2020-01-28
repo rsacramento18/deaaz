@@ -20,6 +20,7 @@ import { BlogComponent } from './blog/blog.component';
 import { SobreComponent } from './sobre/sobre.component';
 import { ContactosComponent } from './contactos/contactos.component';
 import { EscritorComponent } from './escritor/escritor.component';
+import {AngularFontAwesomeModule} from 'angular-font-awesome';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,8 @@ import { EscritorComponent } from './escritor/escritor.component';
         }
     }),
     FroalaEditorModule.forRoot(),
-    FroalaViewModule.forRoot()
+    FroalaViewModule.forRoot(),
+    AngularFontAwesomeModule
   ],
   providers: [],
   bootstrap: [AppComponent]

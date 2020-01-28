@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" *ngIf="!this.isLogged">
   <form [formGroup]="loginForm" (ngSubmit)="onFormSubmit()">
     <div class="row login">
       <div class="offset-4 col-4 form-group">
@@ -14,4 +14,20 @@
       </div>
     </div>
   </form>
+</div>
+<div class="container" *ngIf="this.isLogged">
+    <div class="row">
+      <div class="offset-4 col-4 form-group">
+        <span class="info-label">Username</span>
+      </div>
+      <div class="col-4 form-group">
+        <span class="info-label">Username</span>
+      </div>
+    </div>
+  <div class="row">
+      <div class="offset-4 col-4 form-group"></div>
+      <div class="offset-4 col-4 form-group"></div>
+      <div class="offset-4 col-4 form-group"></div>
+
+    </div>
 </div>

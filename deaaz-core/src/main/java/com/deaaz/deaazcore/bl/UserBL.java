@@ -2,6 +2,8 @@ package com.deaaz.deaazcore.bl;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
+
 import com.deaaz.deaazcore.dal.UserDAL;
 import com.deaaz.deaazcore.dto.UserDTO;
 import com.deaaz.deaazcore.dto.CriteriaDTO;
@@ -23,7 +25,16 @@ public class UserBL {
     private @Autowired BCryptPasswordEncoder bCryptPasswordEncoder;
 
     public List<UserDTO> getUserList(List<CriteriaDTO> criterias) {
-        return userDAL.getUserList(criterias);
+        List<UserDTO> users = userDAL.getUserList(criterias);
+        users = users
+                .stream()
+                .map(x -> {
+                        x.setPassword("");
+                        return x;
+                })
+                .collect(Collectors.toList());
+
+        return users;
     }
 
 

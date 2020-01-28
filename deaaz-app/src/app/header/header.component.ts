@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {AuthenticationService} from "../services/authentication.service";
 
 @Component({
   selector: 'app-header',
@@ -6,11 +7,20 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-  isNavbarCollapsed=true;
+  private isNavbarCollapsed=true;
+  private isLogged = false;
 
-  constructor() { }
+  constructor(private authenticationService: AuthenticationService) {
+
+    this.authenticationService.currentUser.subscribe(x => {
+      this.isLogged = x !== null;
+    });
+  }
 
   ngOnInit() {
   }
 
+  logOff() {
+    this.authenticationService.logout();
+  }
 }
