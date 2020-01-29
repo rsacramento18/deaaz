@@ -11,8 +11,10 @@ import {Router} from "@angular/router";
 })
 export class EscritorComponent implements OnInit {
   private loginForm: FormGroup;
-  private user: User;
+  private updateUserForm: FormGroup;
+  public user: User;
   private isLogged = false;
+  private component = 1;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -22,6 +24,7 @@ export class EscritorComponent implements OnInit {
 
     this.authenticationService.currentUser.subscribe(x => {
       this.isLogged = x !== null;
+      this.user = x;
     });
   }
 
@@ -30,6 +33,16 @@ export class EscritorComponent implements OnInit {
       username: ['', [Validators.required]],
       password: ['', [Validators.required]],
     });
+
+    this.updateUserForm = this.formBuilder.group( {
+      username: ['', [Validators.required]],
+      email: ['', [Validators.required]]
+    });
+
+    if(this.user !== null) {
+      this.updateUserForm.get('username').setValue(this.user.username);
+      this.updateUserForm.get('email').setValue(this.user.email);
+    }
 
   }
 
@@ -40,14 +53,21 @@ export class EscritorComponent implements OnInit {
       this.user.username = this.loginForm.controls.username.value;
       this.user.password = this.loginForm.controls.password.value;
 
-      console.log(this.loginForm);
-      this.authenticationService.loginUser(this.user).subscribe((response: any) => {
+      this.authenticationService.loginUser(this.user).subscribe((res: User) => {
+        this.user = res;
 
         window.localStorage.setItem('currentUser', JSON.stringify(this.user));
 
         this.authenticationService.currentUserLogin.next(this.user);
+
+        console.log(res);
+        console.log(this.user);
       });
     }
+  }
+
+  showComponent(num) {
+    this.component = num;
   }
 
 }
