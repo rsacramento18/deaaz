@@ -33,22 +33,22 @@ public class JwtRequestFilter  extends OncePerRequestFilter {
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain chain) throws IOException, ServletException {
 
-        final String requestTokenHeader = request.getHeader("Authorization");
-//        Cookie[] cookies =  request.getCookies();
+//        final String requestTokenHeader = request.getHeader("Authorization");
+        Cookie[] cookies =  request.getCookies();
 
-//        if(cookies == null) {
-//            logger.warn("No cookie available!");
-//        }
-//
-//        assert cookies != null;
-//        final String requestTokenHeader = cookies[0].getValue();
+        if(cookies == null) {
+            logger.warn("No cookie available!");
+        }
+
+
+        assert cookies != null;
+        final String jwtToken = cookies[0].getValue();
+        logger.warn("COOOOOOOOKIE"+ jwtToken);
 
 
         String username = null;
-        String jwtToken = null;
 
-        if (requestTokenHeader != null && requestTokenHeader.startsWith("Bearer ")) {
-            jwtToken = requestTokenHeader.substring(7);
+        if (jwtToken != null) {
 
             try {
                 username = jwtTokenUtil.getUsernameFromToken(jwtToken);
@@ -58,7 +58,7 @@ public class JwtRequestFilter  extends OncePerRequestFilter {
                 System.out.println("JWT Token has expired");
             }
         } else {
-            logger.warn("JWT Token does not begin with Bearer String");
+            logger.warn("No JWT token Available");
         }
 
         if (username != null && SecurityContextHolder.getContext().getAuthentication() == null) {

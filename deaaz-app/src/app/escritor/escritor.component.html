@@ -16,43 +16,48 @@
   </form>
 </div>
 <div class="container" *ngIf="this.isLogged">
-    <div class="row">
-      <div class="col-2">
-          <div class="side-menu">
-            <ul>
-              <li><a (click)="showComponent(1)" [ngClass]="{'active': component == 1}" translate>sidemenu.user</a></li>
-              <li><a (click)="showComponent(2)" [ngClass]="{'active': component == 2}" translate>sidemenu.writers</a></li>
-              <li><a (click)="showComponent(3)" [ngClass]="{'active': component == 3}" translate>sidemenu.posts</a></li>
-              <li><a (click)="showComponent(4)" [ngClass]="{'active': component == 4}" translate>sidemenu.write</a></li>
-            </ul>
-          </div>
-      </div>
-      <div class="col-10">
-        <div *ngIf="component == 1">
-          <div class="row">
-            <div class="col-12">
-              <h2 class="h2" translate>title.user</h2>
-            </div>
-          </div>
-          <form [formGroup]="updateUserForm" (ngSubmit)="onUpdateFormSubmit()">
-            <div class="row user-data">
-              <div class="col-6">
-                <label for="username" translate>writer.username</label>
-                <input type="text" formControlName="username" id="username-writer" class="form-control" placeholder="Insira nome de utilizador">
-              </div>
-              <div class="col-6">
-                <label for="username" translate>writer.email</label>
-                <input type="text" formControlName="email" id="email-writer" class="form-control" placeholder="Insira nome de utilizador">
-              </div>
-
-            </div>
-          </form>
-
-        </div>
-        <div *ngIf="component == 2"></div>
-        <div *ngIf="component == 3"></div>
-        <div *ngIf="component == 4"></div>
-
-      </div>
+  <div class="row">
+    <div class="col-12">
+      <button type="button" class="btn btn-secondary" (click)="logout()" translate>menu.logoff<fa name="sign-out"></fa></button>
     </div>
+  </div>
+  <div class="row">
+    <div class="col-2">
+        <div class="side-menu">
+          <ul>
+            <li><a (click)="showComponent(1)" [ngClass]="{'active': component == 1}" translate>sidemenu.user</a></li>
+            <li><a (click)="showComponent(2)" [ngClass]="{'active': component == 2}" translate>sidemenu.writers</a></li>
+            <li><a (click)="showComponent(3)" [ngClass]="{'active': component == 3}" translate>sidemenu.posts</a></li>
+            <li><a (click)="showComponent(4)" [ngClass]="{'active': component == 4}" translate>sidemenu.write</a></li>
+          </ul>
+        </div>
+    </div>
+    <div class="col-10">
+      <div *ngIf="component == 1">
+        <div class="row">
+          <div class="col-12">
+            <h2 class="h2" translate>title.user</h2>
+          </div>
+        </div>
+        <form [formGroup]="updateUserForm" (ngSubmit)="onUpdateFormSubmit()">
+          <div class="row user-data">
+            <div class="col-6">
+              <label for="username" translate>writer.username</label>
+              <input type="text" formControlName="username" id="username-writer" class="form-control" placeholder="Insira nome de utilizador">
+            </div>
+            <div class="col-6">
+              <label for="username" translate>writer.email</label>
+              <input type="text" formControlName="email" id="email-writer" class="form-control" placeholder="Insira nome de utilizador">
+            </div>
+            <div class="col-12">
+              <button type="submit" class="btn btn-primary">Alterar dados</button>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div *ngIf="component == 2"></div>
+      <div *ngIf="component == 3"></div>
+      <div *ngIf="component == 4"></div>
+    </div>
+  </div>
 </div>

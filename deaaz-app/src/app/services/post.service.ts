@@ -1,32 +1,32 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import {User} from '../entities/user';
+import {Post} from '../entities/post';
 
 @Injectable({
   providedIn: 'root'
 })
-export class UserService {
-  private baseUrl = 'http://localhost:8080/api/users';
+export class PostService {
+  private baseUrl = 'http://localhost:8080/api/posts';
 
   constructor(private httpClient: HttpClient) { }
 
-  getUser( id: number ) {
+  getPost( id: number ) {
     return this.httpClient.get(this.baseUrl + '/${id}', {withCredentials: true});
   }
 
-  getListUser() {
+  getListPost() {
     return this.httpClient.get(this.baseUrl, {withCredentials: true});
   }
 
-  createUser( user: User) {
-    return this.httpClient.put(this.baseUrl, user, {withCredentials: true});
+  createPost(post: Post) {
+    return this.httpClient.put(this.baseUrl, post, {withCredentials: true});
   }
 
-  updateUser( user: User) {
-    return this.httpClient.post(this.baseUrl, user, {withCredentials: true});
+  updatePost(post: Post) {
+    return this.httpClient.post(this.baseUrl, post, {withCredentials: true});
   }
 
-  deleteUser( id: number){
+  deletePost( id: number){
     return this.httpClient.delete(this.baseUrl + '/${id}', {withCredentials: true});
   }
 }

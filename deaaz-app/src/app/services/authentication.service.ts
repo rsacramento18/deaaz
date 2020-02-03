@@ -17,7 +17,7 @@ export class AuthenticationService {
   }
 
   loginUser( user: User ) {
-    return this.httpClient.post(this.baseUrl, user);
+    return this.httpClient.post(this.baseUrl, user, {withCredentials: true});
   }
 
   logout() {

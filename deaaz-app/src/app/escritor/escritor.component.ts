@@ -2,7 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {AuthenticationService} from '../services/authentication.service';
 import {User} from '../entities/user';
-import {Router} from "@angular/router";
+import {Writer} from "../entities/writer";
+import {Post} from "../entities/post";
+import {WriterService} from "../services/writer.service";
+import {PostService} from "../services/post.service";
 
 @Component({
   selector: 'app-escritor',
@@ -13,13 +16,19 @@ export class EscritorComponent implements OnInit {
   private loginForm: FormGroup;
   private updateUserForm: FormGroup;
   public user: User;
+  public writers: Writer[];
+  public posts: Post[];
   private isLogged = false;
   private component = 1;
+  public value: string[] = [];
+  public field: string[] = [];
+  public operator: string[] = [];
 
   constructor(
     private formBuilder: FormBuilder,
     private authenticationService: AuthenticationService,
-    private router: Router
+    private writerService: WriterService,
+    private postService: PostService
   ) {
 
     this.authenticationService.currentUser.subscribe(x => {
@@ -59,11 +68,29 @@ export class EscritorComponent implements OnInit {
         window.localStorage.setItem('currentUser', JSON.stringify(this.user));
 
         this.authenticationService.currentUserLogin.next(this.user);
+        this.getWriters();
 
-        console.log(res);
-        console.log(this.user);
       });
     }
+  }
+
+  getWriters() {
+    console.log(this.user);
+    console.log(this.value);
+    if ( this.user.id != null) {
+      this.value.push(String(this.user.id));
+      this.field.push('user');
+      this.operator.push('EQUAL');
+      this.writerService.getListWriterWithParams(this.value, this.field, this.operator).subscribe( (res: Writer[]) => {
+        console.log(res);
+        res = this.writers;
+      });
+
+    }
+  }
+
+  logout() {
+    this.authenticationService.logout();
   }
 
   showComponent(num) {
