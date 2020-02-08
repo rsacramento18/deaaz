@@ -75,12 +75,18 @@ export class EscritorComponent implements OnInit {
   }
 
   getWriters() {
-    console.log(this.user);
-    console.log(this.value);
+    this.value = [];
+    this.field = [];
+    this.operator = [];
     if ( this.user.id != null) {
       this.value.push(String(this.user.id));
       this.field.push('user');
       this.operator.push('EQUAL');
+
+      console.log(this.value);
+      console.log(this.value);
+      console.log(this.operator);
+
       this.writerService.getListWriterWithParams(this.value, this.field, this.operator).subscribe( (res: Writer[]) => {
         console.log(res);
         res = this.writers;
