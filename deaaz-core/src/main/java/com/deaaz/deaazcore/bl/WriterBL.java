@@ -1,6 +1,8 @@
 package com.deaaz.deaazcore.bl;
 
+import com.deaaz.deaazcore.dal.UserDAL;
 import com.deaaz.deaazcore.dal.WriterDAL;
+import com.deaaz.deaazcore.dao.UserDAO;
 import com.deaaz.deaazcore.dto.CriteriaDTO;
 import com.deaaz.deaazcore.dto.UserDTO;
 import com.deaaz.deaazcore.dto.WriterDTO;
@@ -17,9 +19,22 @@ public class WriterBL {
     WriterDAL writerDAL;
 
     private @Autowired
+    UserDAL userDAL;
+
+    private @Autowired
     BCryptPasswordEncoder bCryptPasswordEncoder;
 
     public List<WriterDTO> getWriterList(List<CriteriaDTO> criterias) {
+        CriteriaDTO newCriteria;
+        for (CriteriaDTO criteria: criterias) {
+            if(criteria.getField().equals("user")) {
+                UserDTO userDTO = userDAL.getUser(Integer.parseInt(criteria.getValues().get(0).toString()));
+
+                UserDAO userDAO = new UserDAO(userDTO);
+
+                criteria.setValues().add(userDAO);
+            }
+        }
         return writerDAL.getWriterList(criterias);
     }
 
